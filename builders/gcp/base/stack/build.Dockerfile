@@ -21,12 +21,30 @@ COPY licenses/ /usr/local/share/licenses/buildpacks/
 # python3 is required by node-gyp to compile native modules.
 # unzip is required to extract gradle.
 # xz-utils is required to install nodejs/runtime.
+#
+# required by cpp builders:
+#   g++-8
+#   gcc-8
+#   libstdc++-8-dev
+#   pkg-config
+#   ninja-build
+#   tar
+#   unzip
+#   zip
+# 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential \
   git \
   python3 \
   unzip \
   xz-utils \
+  g++-8 \
+  gcc-8 \
+  libstdc++-8-dev \
+  pkg-config \
+  ninja-build \
+  tar \
+  zip \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER cnb
